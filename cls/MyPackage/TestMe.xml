@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2013.1.4 (Build 801U)" ts="2016-03-31 12:25:49">
+<Class name="MyPackage.TestMe">
+<Super>%RegisteredObject</Super>
+<TimeChanged>64008,44507.634947</TimeChanged>
+<TimeCreated>60171,38292.065582</TimeCreated>
+
+<Method name="Add">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>arg1:%Integer,arg2:%Integer</FormalSpec>
+<ReturnType>%Integer</ReturnType>
+<Implementation><![CDATA[
+
+	quit arg1 + arg2
+]]></Implementation>
+</Method>
+
+<Method name="CreateContact">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>name:%String,type:%String</FormalSpec>
+<ReturnType>MyPackage.Contact</ReturnType>
+<Implementation><![CDATA[
+	Set contact = ##class(MyPackage.Contact).%New()
+	Set contact.Name=name 
+	Set contact.ContactType=type
+	Quit contact
+]]></Implementation>
+</Method>
+
+<Method name="GetContactsByType">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>type:%String</FormalSpec>
+<ReturnType>%ListOfObjects</ReturnType>
+<Implementation><![CDATA[
+	
+	Set list=##class(%Library.ResultSet).%New()
+]]></Implementation>
+</Method>
+</Class>
+</Export>
