@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2013.1.4 (Build 801U)" ts="2016-03-31 12:25:44">
+<Class name="MyPackage.Contact">
+<Super>%Persistent,%Populate,%XML.Adaptor</Super>
+<TimeChanged>64008,39134.185494</TimeChanged>
+<TimeCreated>60171,59140.958255</TimeCreated>
+<Inheritance>right</Inheritance>
+
+<Property name="ContactType">
+<Description>
+Describes the nature of the contact: Personal or Business</Description>
+<Type>%String</Type>
+<Parameter name="TRUNCATE" value="1"/>
+<Parameter name="VALUELIST" value=",Business,Personal"/>
+</Property>
+
+<Property name="Name">
+<Description>
+Represents a contact's name</Description>
+<Type>%String</Type>
+<Required>1</Required>
+<Parameter name="POPSPEC" value="Name()"/>
+<Parameter name="TRUNCATE" value="1"/>
+</Property>
+
+<Query name="ByContactType">
+<Type>%SQLQuery</Type>
+<FormalSpec>type:%String</FormalSpec>
+<SqlQuery>SELECT %ID FROM Contact
+ WHERE (ContactType = :type)
+ ORDER BY Name</SqlQuery>
+<Parameter name="CONTAINID" value="1"/>
+</Query>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^MyPackage.ContactD</DataLocation>
+<DefaultData>ContactDefaultData</DefaultData>
+<IdLocation>^MyPackage.ContactD</IdLocation>
+<IndexLocation>^MyPackage.ContactI</IndexLocation>
+<StreamLocation>^MyPackage.ContactS</StreamLocation>
+<ExtentSize>100000</ExtentSize>
+<Data name="ContactDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>ContactType</Value>
+</Value>
+<Value name="3">
+<Value>Name</Value>
+</Value>
+</Data>
+<Property name="ContactType"/>
+<Property name="Name"/>
+</Storage>
+</Class>
+</Export>
